@@ -1,0 +1,69 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+xmlns:content="http://purl.org/rss/1.0/modules/content/"
+xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:atom="http://www.w3.org/2005/Atom"
+xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+>
+ 
+<channel>
+<title>{{ site.title }}</title>
+<atom:link href="{{ site.url }}/fkthry/feed.xml" rel="self" type="application/rss+xml" />
+<link>{{ site.website }}</link>
+<description>{{ site.description }}</description>
+<lastBuildDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %z" }}</lastBuildDate>
+<language>en-US</language>
+<sy:updatePeriod>hourly</sy:updatePeriod>
+<sy:updateFrequency>1</sy:updateFrequency>
+<generator>http://jekyllrb.com</generator>
+<itunes:summary>{{ site.summary }}</itunes:summary>
+<itunes:author>{{ site.author }}</itunes:author>
+<itunes:explicit>{{ site.explicit }}</itunes:explicit>
+<itunes:image href="{{ site.album_art }}" />
+<itunes:owner>
+<itunes:name>{{ site.owner }}</itunes:name>
+<itunes:email>{{ site.email }}</itunes:email>
+</itunes:owner>
+<managingEditor>{{ site.email }} ({{ site.owner }})</managingEditor>
+<itunes:subtitle>{{ site.subtitle }}</itunes:subtitle>
+<image>
+<title>{{ site.title }}</title>
+<url>{{ site.album_art }}</url>
+<link>{{ site.album_art }}</link>
+</image>
+<itunes:category text="{{ site.category }}">
+</itunes:category>
+{% for post in site.posts %}
+  <item>
+    <title>{{ post.title }}</title>
+    <link>{{ site.url }}{{ post.url }}</link>
+    <comments>{{ site.url }}{{ post.url }}#comments</comments>
+    <pubDate>{{ post.date | date: "%a, %d %b %Y %T %z" }}</pubDate>
+    <enclosure url="{{ post.podcast_link }}" length="{{ post.podcast_length }}" type="audio/mpeg" />
+    <itunes:subtitle>{{ post.summary }}</itunes:subtitle>
+    <itunes:summary>{{ post.summary }}</itunes:summary>
+    <itunes:author>{{ site.author }}</itunes:author>
+    <itunes:image href="{{ site.album_art }}" />
+    <itunes:explicit>{{ site.explicit }}</itunes:explicit>
+    <itunes:duration>{{ post.podcast_duration }}</itunes:duration>
+    <dc:creator><![CDATA[{{ site.author | cdata_escape }}]]></dc:creator>
+{% for category in post.categories %}
+    <category><![CDATA[{{ category | cdata_escape }}]]></category>
+{% endfor %}
+{% for category in post.tags %}
+    <category><![CDATA[{{ category | cdata_escape }}]]></category>
+{% endfor %}
+    <guid isPermaLink="{% if post.podcast_guid %}false{% else %}true{% endif %}">{{ site.url }}{% if post.podcast_guid %}/{{ post.podcast_guid }}{% else %}{{ post.url }}{% endif %}</guid>
+    <description>{{ post.summary }}</description>
+
+
+
+  </item>
+{% endfor %}
+</channel>
+</rss>
