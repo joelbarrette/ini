@@ -11,18 +11,18 @@
 feed:
   path: feed.xml
 
-podcast_url: https://joelbarrette.github.io/fkthry/feed.xml
+podcast_url: https://joelbarrette.github.io/ini/feed.xml
 album_art: https://github.com/joelbarrette/fkthry/raw/master/assets/img/cover.png
-title: Fktheory
-owner: Kotek and In1t
+title: INI
+owner: INI
 email: public@joelbarrette.com
 category: Music
 explicit: "no"
-author: Kotek and In1t
-description: Kotek and IN1T making everything more complicatedley simple
-summary: Kotek and IN1T making everything more complicatedley simple
-subtitle: Kotek and IN1T
-website: https://fkthry.com
+author: INI
+description: INI
+summary: INI
+subtitle: INI
+website: https://in1t.sh
 
 # Your name to show in the footer
 
